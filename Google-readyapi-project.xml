@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:soapui-project id="89af0ab8-f843-4a92-94da-f3529d0501f6" created="3.6.0" activeEnvironment="Default environment" name="Google" resourceRoot="" updated="3.6.0 2021-02-02T15:53:59Z" encryptionMode="Not encrypted" xmlns:con="http://eviware.com/soapui/config">
+  <con:settings>
+    <con:setting id="89af0ab8-f843-4a92-94da-f3529d0501f6fileName">Google</con:setting>
+  </con:settings>
+  <con:properties/>
+  <con:wssContainer/>
+  <con:databaseConnectionContainer/>
+  <con:jmsConnectionContainer/>
+  <con:oAuth2ProfileContainer/>
+  <con:oAuth1ProfileContainer/>
+  <con:reporting>
+    <con:xmlTemplates xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+    <con:xmlTemplates/>
+    <con:parameters/>
+    <con:parameters/>
+  </con:reporting>
+  <con:eventHandlers type="RequestFilter.filterRequest" name="RequestFilter.filterRequest">
+    <con:script>// Sample event script to add custom HTTP header to all outgoing REST, SOAP and HTTP(S) calls
+// This code is often used for adding custom authentication to ReadyAPI functional tests
+
+// If hardcoding the token, uncomment and change line 5
+// token = '4567'
+
+// If your token is parameterized in Project level custom property, uncomment line 8
+// token = request.parent.testCase.testSuite.project.getProperty('auth_token').getValue()
+
+// To modify all outgoing calls, remove comments from lines 11 to 16
+// headers = request.requestHeaders
+// if (headers.containsKey('auth_token2') == false) {
+//   headers.put('auth_token2', token)
+//   request.requestHeaders = headers
+// }</con:script>
+  </con:eventHandlers>
+  <con:eventHandlers type="TestRunListener.afterStep" name="TestRunListener.afterStep">
+    <con:script>// Save all test step results into files
+// Change the directory path in line 5 to a location where you want to store details
+// then uncomment lines 5 to 10
+
+// filePath = 'C:\\tempOutputDirectory\\'
+// fos = new java.io.FileOutputStream(filePath + testStepResult.testStep.label + '.txt', true)
+// pw = new java.io.PrintWriter(fos)
+// testStepResult.writeTo(pw)
+// pw.close()
+// fos.close()</con:script>
+  </con:eventHandlers>
+  <con:authRepository/>
+  <con:tags/>
+  <con:interface xsi:type="con:RestService" id="5bc96219-6378-4ddb-a86f-1613a577834f" wadlVersion="http://wadl.dev.java.net/2009/02" name="http://google.com" type="rest" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <con:settings>
+      <con:setting id="5bc96219-6378-4ddb-a86f-1613a577834ffileName">http%3A%2F%2Fgoogle.com</con:setting>
+    </con:settings>
+    <con:definitionCache/>
+    <con:endpoints>
+      <con:endpoint>http://google.com</con:endpoint>
+    </con:endpoints>
+    <con:resource name="" path="" id="e2e32833-8c91-4bb7-a171-b43661f12626">
+      <con:settings>
+        <con:setting id="e2e32833-8c91-4bb7-a171-b43661f12626fileName"/>
+      </con:settings>
+      <con:parameters/>
+      <con:method name="" id="ff67a3c3-01f1-44d6-aec0-401579bacb53" method="GET">
+        <con:settings/>
+        <con:parameters/>
+        <con:representation type="RESPONSE">
+          <con:mediaType>text/html; charset=ISO-8859-1</con:mediaType>
+          <con:status>200</con:status>
+          <con:params/>
+          <con:element>html</con:element>
+        </con:representation>
+        <con:request name="Request 1" id="144a5383-e9cf-4402-a36f-bba71374e0c8" mediaType="application/json">
+          <con:settings/>
+          <con:endpoint>http://google.com</con:endpoint>
+          <con:credentials>
+            <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+            <con:authType>No Authorization</con:authType>
+          </con:credentials>
+          <con:parameters/>
+        </con:request>
+      </con:method>
+    </con:resource>
+  </con:interface>
+  <con:testSuite id="b88f052d-b4c0-45e5-aa50-0e32179fbb16" name="http://google.com Test Suite">
+    <con:settings>
+      <con:setting id="b88f052d-b4c0-45e5-aa50-0e32179fbb16fileName">http%3A%2F%2Fgoogle.com-Test-Suite</con:setting>
+    </con:settings>
+    <con:runType>SEQUENTIAL</con:runType>
+    <con:properties/>
+    <con:reportParameters/>
+    <con:testCase id="de4551ca-7325-4dfb-af95-8213f3da13dd" discardOkResults="false" failOnError="true" failTestCaseOnErrors="true" keepSession="false" name="http://google.com Test Case 1" searchProperties="true" timeout="0">
+      <con:settings>
+        <con:setting id="de4551ca-7325-4dfb-af95-8213f3da13ddfileName">http%3A%2F%2Fgoogle.com-Test-Case-1</con:setting>
+      </con:settings>
+      <con:testStep type="restrequest" name="Request 1" id="946ab130-4e43-4d87-9528-3d1ccb523f7f">
+        <con:settings/>
+        <con:config service="http://google.com" resourcePath="" methodName="" xsi:type="con:RestRequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+          <con:restRequest name="Request 1" id="144a5383-e9cf-4402-a36f-bba71374e0c8" mediaType="application/json">
+            <con:settings>
+              <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+            </con:settings>
+            <con:endpoint>http://google.com</con:endpoint>
+            <con:request/>
+            <con:originalUri>http://www.google.com/</con:originalUri>
+            <con:assertion type="Valid HTTP Status Codes" id="e33bc464-24bb-42dc-a2e1-17c7fe05060a" name="Valid HTTP Status Codes">
+              <con:settings/>
+              <con:configuration>
+                <codes>200</codes>
+              </con:configuration>
+            </con:assertion>
+            <con:assertion type="Response SLA Assertion" id="a65d371d-3b29-49a2-9164-410d7883fb08" name="Response SLA">
+              <con:configuration>
+                <SLA>200</SLA>
+              </con:configuration>
+            </con:assertion>
+            <con:credentials>
+              <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+              <con:authType>No Authorization</con:authType>
+            </con:credentials>
+            <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+            <con:parameters/>
+          </con:restRequest>
+        </con:config>
+      </con:testStep>
+      <con:properties/>
+      <con:reportParameters/>
+    </con:testCase>
+  </con:testSuite>
+</con:soapui-project>
